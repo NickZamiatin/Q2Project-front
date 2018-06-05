@@ -48,3 +48,10 @@
      font-family: fantasy;
      font-size: 45px;
  }
+
+ .form-control{
+     background-color: #212529 !important;
+     color: aliceblue !important;
+      font-family: cursive;
+ }
+
