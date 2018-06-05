@@ -1,25 +1,25 @@
-.main   {
+.main {
     border: 10%;
-     margin: 6%;
-    background-color:#212529;
+    margin: 6%;
+    background-color: #212529;
 }
 
 .footer {
-        margin: 6%;
-     background-color:#212529;
-     color:whitesmoke;
+    margin: 6%;
+    background-color: #212529;
+    color: whitesmoke;
 }
 
-  body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-       background-color:#212529 !important;
-  }
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #212529 !important;
+}
 
-  main {
-      flex: 1 0 auto;
-  }
+main {
+    flex: 1 0 auto;
+}
 
 .carousel {
     margin-bottom: 4rem;
@@ -29,29 +29,41 @@
     position: relative;
 }
 
-
 .carousel-item {
     height: 42rem;
     /* 42 */
 }
 
- #buttons {
-     margin: 3%;
-     text-align: center;
- }
- .table   {
-     font-family: cursive;
-     font-size: 25px;
- }
+#buttons {
+    margin: 3%;
+    text-align: center;
+}
 
- .bg-dark{
-     font-family: fantasy;
-     font-size: 45px;
- }
+.table {
+    font-family: cursive;
+    font-size: 25px;
+}
 
- .form-control{
-     background-color: #212529 !important;
-     color: aliceblue !important;
-      font-family: cursive;
- }
+.bg-dark {
+    font-family: fantasy;
+    font-size: 45px;
+}
 
+.form-control {
+    background-color: #212529 !important;
+    color: aliceblue !important;
+    font-family: cursive;
+}
+
+.card-header {
+    background-color: #212529 !important;
+    color: aliceblue !important;
+    font-family: cursive;
+}
+
+.card {
+    
+    background-color: #212529 !important;
+    color: aliceblue !important;
+    font-family: cursive;
+}

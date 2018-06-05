@@ -2,37 +2,37 @@ window.addEventListener('load', () => {
     console.log('ready')
     const baseUrl = 'http://localhost:3087/cooking'
 
-        const createRecepi = () => {
-            event.preventDefault();
-            const name = document.querySelector('#name').value;
-            const ingredients = document.querySelector('#ingredients').value;
-            const preparation_time = document.querySelector('#preparation_time').value;
-            const country = document.querySelector('#country').value;
-            const cooking_img_url = document.querySelector('#cooking_img_url').value;
-            const gluten_free = document.querySelector('#gluten_free').value;
-            axios.post(baseUrl, {
-                  name,
-                  ingredients,
-                  preparation_time,
-                  country,
-                  cooking_img_url,
-                  gluten_free
-                })
-                .then(result => {
-                    showCooking(result.data)
-                })
-                .catch(error => {
-                    console.error(error)
-                })
+    const createRecepi = () => {
+        event.preventDefault();
+        const name = document.querySelector('#name').value;
+        const ingredients = document.querySelector('#ingredients').value;
+        const preparation_time = document.querySelector('#preparation_time').value;
+        const country = document.querySelector('#country').value;
+        const cooking_img_url = document.querySelector('#cooking_img_url').value;
+        const gluten_free = document.querySelector('#gluten_free').value;
+        axios.post(baseUrl, {
+                name,
+                ingredients,
+                preparation_time,
+                country,
+                cooking_img_url,
+                gluten_free
+            })
+            .then(result => {
+                showCooking(result.data)
+            })
+            .catch(error => {
+                console.error(error)
+            })
 
-        }
+    }
 
 
 
     const newRecepi = () => {
         console.log('return add button ')
         // document.querySelector('#main-container').innerHTML = ""
-         document.querySelector('#app').innerHTML = `
+        document.querySelector('#app').innerHTML = `
                          <div class="input">
 
                          <button  class="btn btn-outline-warning btn-lg" type="submit" id='main-page' >Main page </button>
@@ -40,40 +40,40 @@ window.addEventListener('load', () => {
                          <br/>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="btn btn-warning" id="inputGroup-sizing-default" id="name">Name</span>
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Name</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" id="name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                         <div class="input-group-prepend">
-                            <span class="btn btn-warning" id="inputGroup-sizing-default">Ingredients</span>
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Ingredients</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" id="ingredients" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="btn btn-warning" id="inputGroup-sizing-default">Prep time</span>
+                            <span class="btn btn-warning" id="inputGroup-sizing-default"  >Prep time</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input type="text"  id="preparation_time" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                         <div class="input-group-prepend">
-                            <span class="btn btn-warning" id="inputGroup-sizing-default">Country</span>
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Country</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input type="text"  id="country" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="btn btn-warning" id="inputGroup-sizing-default">Gluten free</span>
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Gluten free</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" id="gluten_free" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                         <div class="input-group-prepend">
                             <span class="btn btn-warning" id="inputGroup-sizing-default">URL</span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <input type="text"  id="cooking_img_url" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                     </div>
                     <button  class="btn btn-outline-warning btn-lg" type="submit"  id="create-recepi">Create</button>
                 </div>
          `;
-             document.querySelector('#main-page').addEventListener('click', allRecepi)
+        document.querySelector('#main-page').addEventListener('click', allRecepi)
 
-          document.querySelector('#create-recepi').addEventListener('click', createRecepi);          
+        document.querySelector('#create-recepi').addEventListener('click', createRecepi);
     }
 
 
@@ -162,7 +162,42 @@ window.addEventListener('load', () => {
 
     const showCooking = cooking => {
         console.log('return show')
-        document.querySelector('#app').innerHTML = ``;
+        document.querySelector('#app').innerHTML = `        
+        <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="row">
+                        <div class="col" id="home-butt">
+                            <button class="btn btn-outline-warning btn-lg" type="submit" id='main-page'>Main page </button>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="col" id="img-show">
+                            <img src="${cooking.cooking_img_url}/&w=1050&q=560"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" id="information">
+                            <div class="card border-warning lg-3" style="max-width: 38rem;">
+                                <div class="card-header">${cooking.name}}</div>
+                                <div class="card-body text-warning">
+                                    <h5 class="card-title">Ingredients : ${cooking.ingredients} </h5>
+                                    <h5 class="card-title">Prep time : ${cooking.preparation_time}</h5>
+                                    <h5 class="card-title"> Country : ${cooking.country}</h5>
+                                    <h5 class="card-title">Gluten free : ${cooking.gluten_free}</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+
+            </div>`;
+             document.querySelector('#main-page').addEventListener('click', allRecepi)
     }
     const editCooking = () => {
         console.log('return edit')
