@@ -31,7 +31,6 @@ window.addEventListener('load', () => {
 
     const newRecepi = () => {
         console.log('return add button ')
-        // document.querySelector('#main-container').innerHTML = ""
         document.querySelector('#app').innerHTML = `
                          <div class="input">
 
@@ -140,8 +139,8 @@ window.addEventListener('load', () => {
                                     <button type="button" class="btn btn-warning">${cooking.gluten_free}</button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-warning" id=edit-${cooking.id}> add</button>
-                                    <button type="button" class="btn btn-outline-warning" id=delete-${cooking.id}>delete </button>
+                                    <button type="button" class="btn btn-outline-warning" id=edit-${cooking.id}> Edit</button>
+                                    <button type="button" class="btn btn-outline-warning" id=delete-${cooking.id}>Delete </button>
                                 </td>`;
                     document.querySelector('#recepi-tbody').appendChild(trEl);
                     document.querySelector(`#show-${cooking.id}`).addEventListener('click', () => {
@@ -197,10 +196,87 @@ window.addEventListener('load', () => {
                 
 
             </div>`;
-             document.querySelector('#main-page').addEventListener('click', allRecepi)
+        document.querySelector('#main-page').addEventListener('click', allRecepi)
     }
-    const editCooking = () => {
+    const editCooking = cooking => {
         console.log('return edit')
+        document.querySelector('#app').innerHTML = `
+         <div class="input">
+
+                         <button  class="btn btn-outline-warning btn-lg" type="submit" id='main-page' >Main page </button>
+                         <br/>
+                         <br/>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Name</span>
+                        </div>
+                        <input type="text" id="edit-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Ingredients</span>
+                        </div>
+                        <input type="text" id="edit-ingredients" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning" id="inputGroup-sizing-default"  >Prep time</span>
+                        </div>
+                        <input type="text"  id="edit-preparation_time" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Country</span>
+                        </div>
+                        <input type="text"  id="edit-country" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning" id="inputGroup-sizing-default" >Gluten free</span>
+                        </div>
+                        <input type="text" id="edit-gluten_free" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <div class="input-group-prepend">
+                            <span class="btn btn-warning" id="inputGroup-sizing-default">URL</span>
+                        </div>
+                        <input type="text"  id="edit-cooking_img_url" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <button  class="btn btn-outline-warning btn-lg" type="submit"  id="update-recepi">Update</button>
+                </div>
+        `;
+        document.querySelector('#main-page').addEventListener('click', allRecepi)
+        document.querySelector('#edit-name').value = cooking.name;
+        document.querySelector('#edit-ingredients').value = cooking.ingredients;
+        document.querySelector('#edit-preparation_time').value = cooking.preparation_time;
+        document.querySelector('#edit-country').value = cooking.country;
+        document.querySelector('#edit-gluten_free').value = cooking.gluten_free;
+        document.querySelector('#edit-cooking_img_url').value = cooking.cooking_img_url;
+        document.querySelector('#update-recepi').addEventListener('click', () => {
+            updateRecepi(cooking.id)
+        })
+
+
+    }
+    const updateRecepi = id => {
+          event.preventDefault();
+          const name = document.querySelector('#edit-name').value;
+          const ingredients = document.querySelector('#edit-ingredients').value;
+          const preparation_time = document.querySelector('#edit-preparation_time').value;
+          const country = document.querySelector('#edit-country').value;
+          const gluten_free = document.querySelector('#edit-gluten_free').value;
+          const cooking_img_url = document.querySelector('#edit-cooking_img_url').value;
+          axios.put(`${baseUrl}/${id}`, {
+                  name,
+                  ingredients,
+                  preparation_time,
+                  country,
+                  gluten_free,
+                  cooking_img_url
+              })
+              .then(result => {
+                  console.log('update', result.data)
+                  showCooking(result.data)
+
+              })
+              .catch(error => {
+                  console.error(error)
+              })
+
     }
     const deleteCooking = id => {
         console.log('delete move', id)
