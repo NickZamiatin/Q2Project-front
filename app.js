@@ -71,7 +71,6 @@ window.addEventListener('load', () => {
                 </div>
          `;
         document.querySelector('#main-page').addEventListener('click', allRecepi)
-
         document.querySelector('#create-recepi').addEventListener('click', createRecepi);
     }
 
@@ -124,8 +123,10 @@ window.addEventListener('load', () => {
                                             aria-expanded="false">
                                             Show all ingredients
                                         </button>
+                                        <div class = "container">
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <p class="dropdown-item" href="#">${cooking.ingredients}</p>
+                                            <p class="dropdown-item" href="#">${cooking.ingredients.replace(/, /g, "<br>")}</p>
+                                        </div>
                                         </div>
                                     </div>
                                 </td>

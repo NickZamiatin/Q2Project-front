@@ -2,12 +2,22 @@
     border: 10%;
     margin: 6%;
     background-color: #212529;
+    font-family: 'Lobster',
+                 cursive,
+    cursive,
+    sans-serif
 }
+
 
 .footer {
     margin: 6%;
     background-color: #212529;
     color: whitesmoke;
+     font-family: 'Lobster',
+                 cursive,
+     cursive,
+     sans-serif;
+     
 }
 
 body {
@@ -40,30 +50,40 @@ main {
 }
 
 .table {
-    font-family: cursive;
+    
     font-size: 25px;
 }
 
 .bg-dark {
-    font-family: fantasy;
+    font-family: 'Lobster',
+                 cursive,
+    cursive,
+    sans-serif;
     font-size: 45px;
 }
 
 .form-control {
     background-color: #212529 !important;
     color: aliceblue !important;
-    font-family: cursive;
+    
 }
 
 .card-header {
     background-color: #212529 !important;
     color: aliceblue !important;
-    font-family: cursive;
+    
 }
 
 .card {
-    
+
     background-color: #212529 !important;
     color: aliceblue !important;
-    font-family: cursive;
+    
+}
+.footer-button-3 {
+    text-align: right;
+}
+
+.footer-button-2 {
+    text-align: center;
 }
