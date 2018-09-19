@@ -1,6 +1,6 @@
 window.addEventListener('load', () => {
     console.log('ready')
-    const baseUrl = 'http://localhost:3087/cooking'
+    const baseUrl = 'https://recepi-project2.herokuapp.com/cooking'
 
     const createRecepi = () => {
         event.preventDefault();
